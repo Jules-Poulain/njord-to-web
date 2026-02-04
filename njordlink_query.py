@@ -9,8 +9,6 @@ import os
 
 
 # Check if .env file exists and load it
-if not os.path.exists(".env"):
-    raise Exception("No .env file found")
 load_dotenv()
 
 
