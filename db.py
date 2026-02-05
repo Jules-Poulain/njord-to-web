@@ -1,3 +1,6 @@
+import os
+print("DATABASE_URL seen by container:", os.getenv("DATABASE_URL"))
+
 from sqlalchemy import create_engine, Column, Float, String, DateTime, JSON
 from sqlalchemy.orm import declarative_base, sessionmaker
 import os
