@@ -30,5 +30,14 @@ async def collect():
     session.commit()
     session.close()
 
+async def loop_collect():
+    while True:
+        try:
+            await collect()
+        except Exception as e:
+            print("Collector error:", e)
+
+        await asyncio.sleep(60)  # collect every 60 seconds
+
 if __name__ == "__main__":
-    asyncio.run(collect())
+    asyncio.run(loop_collect())
