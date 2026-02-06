@@ -41,6 +41,8 @@ async def loop_collect():
 
 if __name__ == "__main__":
     import time
+    print("Name loop entered")
     while True:
+        print("Data collection in progress...")
         asyncio.run(loop_collect())
         time.sleep(1)
