@@ -1,11 +1,14 @@
 print("Collector.py started")
 
-import asyncio
-from njordlink_query import get_latest_pgns
-from db import get_session
-from models import BoatData
-import uuid
-
+try:
+    import asyncio
+    from njordlink_query import get_latest_pgns
+    from db import get_session
+    from models import BoatData
+    import uuid
+except Exception as e:
+    print("IMPORT ERROR:", e)
+    raise
 
 async def collect():
     data = await get_latest_pgns()
