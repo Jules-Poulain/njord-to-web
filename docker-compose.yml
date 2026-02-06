@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: njord_db
+    environment:
+      POSTGRES_DB: njord
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  collector:
+    build: .
+    container_name: njord_collector
+    command: python collector.py
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  api:
+    build: .
+    container_name: njord_api
+    command: python api.py
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
