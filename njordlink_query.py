@@ -26,7 +26,6 @@ async def get_latest_pgns():
         organization_id=os.getenv("ORG_ID"),
         sql_query="""
         SELECT * FROM readings
-        WHERE component_name = 'location'
         ORDER BY time_received DESC
         LIMIT 1
         """,
