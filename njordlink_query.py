@@ -29,7 +29,7 @@ async def get_latest_pgns():
         if not records:
             return None
 
-        return records[0]
+        return records[0].data
 
     finally:
         await viam_client.close()
