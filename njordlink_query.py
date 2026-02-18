@@ -12,7 +12,7 @@ async def get_latest_pgns():
         auth_entity=os.getenv("API_KEY_ID"),
     )
 
-    viam_client = await ViamClient.create_from_dial_options(dial_options)
+    viam_client = ViamClient.create_from_dial_options(dial_options)
 
     try:
         data_client = viam_client.data_client
