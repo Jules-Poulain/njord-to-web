@@ -2,6 +2,9 @@ import os
 from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
 
+print("API_KEY_ID:", os.getenv("API_KEY_ID"))
+print("API_KEY_SECRET:", os.getenv("API_KEY_SECRET"))
+print("ORG_ID:", os.getenv("ORG_ID"))
 
 async def get_latest_pgns():
     dial_options = DialOptions(
