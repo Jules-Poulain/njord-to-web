@@ -21,8 +21,6 @@ services:
     restart: always
     depends_on:
       - db
-    env_file:
-      - .env
 
 
   api:
@@ -36,8 +34,6 @@ services:
       - db
     ports:
       - "8040:8000"
-    env_file:
-      - .env
 
 
 
