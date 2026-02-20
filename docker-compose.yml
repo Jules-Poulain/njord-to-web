@@ -4,7 +4,7 @@ services:
   db:
     image: postgres:15
     container_name: njord_db
-    restart: always
+    restart: unless-stopped
     environment:
       POSTGRES_DB: njord
       POSTGRES_USER: njord
@@ -18,7 +18,7 @@ services:
       - .:/app
     container_name: njord_collector
     command: python collector.py
-    restart: always
+    restart: unless-stopped
     depends_on:
       - db
 
@@ -29,7 +29,7 @@ services:
       - .:/app
     container_name: njord_api
     command: uvicorn api:app --host 0.0.0.0 --port 8000
-    restart: always
+    restart: unless-stopped
     depends_on:
       - db
     ports:
